@@ -1,0 +1,26 @@
+% Hechos sobre síntomas 
+sintoma(malestar_general).
+sintoma(fiebre).
+sintoma(tos).
+sintoma(secreciones_nasales).
+sintoma(dolor_de_cabeza).
+sintoma(dolor_muscular).
+sintoma(dolor_articular).
+sintoma(rash).
+sintoma(hemorragia_inusual).
+
+% Diagnóstico de gripe
+diagnostico(gripe) :- 
+    sintoma(malestar_general),
+    sintoma(fiebre),
+    sintoma(tos),
+    sintoma(secreciones_nasales).
+
+
+% Regla para diagnosticar basado en síntomas
+diagnosticar(Sintomas, Resultado) :-
+    (   diagnostico_gripe(Sintomas) -> 
+        Resultado = 'Gripe'
+    ;   
+        Resultado = 'No se puede diagnosticar'.
+    ).
