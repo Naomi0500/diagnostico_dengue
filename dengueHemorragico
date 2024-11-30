@@ -1,0 +1,29 @@
+
+% Hechos sobre síntomas 
+sintoma(malestar_general).
+sintoma(fiebre).
+sintoma(tos).
+sintoma(secreciones_nasales).
+sintoma(dolor_de_cabeza).
+sintoma(dolor_muscular).
+sintoma(dolor_articular).
+sintoma(rash).
+sintoma(hemorragia_inusual).
+
+% Diagnóstico de dengue hemorrágico
+diagnostico(dengue_hemorragico) :- 
+    diagnostico(dengue),
+    sintoma(hemorragia_inusual).
+
+
+% Regla para diagnosticar
+% La regla diagnosticar/2 toma una lista de síntomas.
+% como entrada y devuelve el diagnóstico correspondiente.
+
+% Regla para diagnosticar basado en síntomas
+diagnosticar(Sintomas, Resultado) :-
+    (   diagnostico_dengue_hemorragico(Sintomas) -> 
+        Resultado = 'Dengue Hemorrágico'
+    ;   
+        Resultado = 'No se puede diagnosticar'.
+    )
